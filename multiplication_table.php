@@ -1,5 +1,5 @@
 <?php
-$n = 100;
+$n = 10;
 $codeHTML = '<html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -26,11 +26,7 @@ for($i=-1;$i<=$n;$i++){
         $codeHTML .= strval($i);
         $codeHTML .= '</th>';
     }else{
-        if($j % 2 == 0){
-            $codeHTML .= '<td bgcolor ="red">';
-        }else{
-            $codeHTML .= '<td>';
-        }
+        $codeHTML .= '<td>';
         $codeHTML .= strval($i*$j);
         $codeHTML .= '</td>';
     }
