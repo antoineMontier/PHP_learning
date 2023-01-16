@@ -44,9 +44,9 @@ To define a constant variable, use the following command `define("CONSTANT_NAME"
 -**associative arrays :**
     same as python disctionnaries, access a table the keys of the array.
     ```
-    $arr = array(`green` => `grass`, 
-                        `red` => 6,
-                        `blue` => `water`);
+    $arr = array('green' => 'grass', 
+                        'red' => 6,
+                        'blue' => 'water');
     ```
     
         access the array content this way : `echo($arr[3]);//-4``echo($arr[`red`])//6`
