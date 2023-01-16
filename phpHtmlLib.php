@@ -17,5 +17,36 @@ function getFinHTML():string{
     </html>';
     return $res;
 }
-echo getDebutHTML('aaaa');
-echo getFinHTML();
+
+function intoBalise(string $bal, string $value = ' ', array $params=null):string{
+    $res = '<';
+    $res .= $bal;
+    if($value == ' ' && $params == null) {
+        $res.=' />';
+        return $res;
+    } elseif ($params != null) {
+        foreach ($params as $key => $val) {
+            $res .=' ';
+            $res .= $key;
+            $res .= '=\'';
+            $res .= $val;
+            $res .= '\'';
+        }
+    }
+    $res .= '>';
+    $res .= $value;
+    $res .= '</';
+    $res .= $bal;
+    $res .= '>';
+    return $res;
+}
+
+echo intoBalise("br");
+echo '
+';
+echo intoBalise("h5", "title");
+echo '
+';
+echo intoBalise("h5", "title", array('class' => 'red', 'id' => 'key1'));
+echo '
+';
