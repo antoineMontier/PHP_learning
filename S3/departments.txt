@@ -1,0 +1,102 @@
+code,nom,population,superficie,region
+1,Ain,588853,5762,Rhône-Alpes
+2,Aisne,539870,7369,Picardie
+3,Allier,343046,7340,Auvergne
+4,Alpes-de-Haute-Provence,159450,6925,Provence-Alpes-Côte d'Azur
+5,Hautes-Alpes,135836,5549,Provence-Alpes-Côte d'Azur
+6,Alpes-Maritimes,1079100,4299,Provence-Alpes-Côte d'Azur
+7,Ardèche,313578,5529,Rhône-Alpes
+8,Ardennes,283296,5229,Champagne-Ardenne
+9,Ariège,151117,4890,Midi-Pyrénées
+10,Aube,303298,6004,Champagne-Ardenne
+11,Aude,353980,6139,Languedoc-Roussillon
+12,Aveyron,277048,8735,Midi-Pyrénées
+13,Bouches-du-Rhône,1967299,5087,Provence-Alpes-Côte d'Azur
+14,Calvados,680908,5548,Basse-Normandie
+15,Cantal,148380,5726,Auvergne
+16,Charente,351563,5956,Poitou-Charentes
+17,Charente-Maritime,616607,6864,Poitou-Charentes
+18,Cher,311022,7235,Centre
+19,Corrèze,243352,5857,Limousin
+2A,Corse-du-Sud,141330,4014,Corse
+2B,Haute-Corse,164344,4666,Corse
+21,Côte-d'Or,524144,8763,Bourgogne
+22,Côtes-d'Armor,587519,6878,Bretagne
+23,Creuse,123584,5565,Limousin
+24,Dordogne,412082,9060,Aquitaine
+25,Doubs,525276,5234,Franche-Comté
+26,Drôme,482984,6530,Rhône-Alpes
+27,Eure,582822,6040,Haute-Normandie
+28,Eure-et-Loir,425502,5880,Centre
+29,Finistère,893914,6733,Bretagne
+30,Gard,701883,5853,Languedoc-Roussillon
+31,Haute-Garonne,1230820,6309,Midi-Pyrénées
+32,Gers,187181,6257,Midi-Pyrénées
+33,Gironde,1434661,10725,Aquitaine
+34,Hérault,1031974,6101,Languedoc-Roussillon
+35,Ille-et-Vilaine,977449,6775,Bretagne
+36,Indre,232268,6791,Centre
+37,Indre-et-Loire,588420,6127,Centre
+38,Isère,1197038,7431,Rhône-Alpes
+39,Jura,261277,4999,Franche-Comté
+40,Landes,379341,9243,Aquitaine
+41,Loir-et-Cher,327868,6343,Centre
+42,Loire,746115,4781,Rhône-Alpes
+43,Haute-Loire,223122,4977,Auvergne
+44,Loire-Atlantique,1266358,6815,Pays de Loire
+45,Loiret,653510,6775,Centre
+46,Lot,173562,5217,Midi-Pyrénées
+47,Lot-et-Garonne,329697,5361,Aquitaine
+48,Lozère,77163,5167,Languedoc-Roussillon
+49,Maine-et-Loire,780082,7166,Pays de Loire
+50,Manche,497762,5938,Basse-Normandie
+51,Marne,566145,8162,Champagne-Ardenne
+52,Haute-Marne,185214,6211,Champagne-Ardenne
+53,Mayenne,305147,5175,Pays de Loire
+54,Meurthe-et-Moselle,731019,5246,Lorraine
+55,Meuse,194003,6211,Lorraine
+56,Morbihan,716182,6823,Bretagne
+57,Moselle,1044898,6216,Lorraine
+58,Nièvre,220199,6817,Poitou-Charentes
+59,Nord,2571940,5743,Nord-Pas-de-Calais
+60,Oise,801512,5860,Picardie
+61,Orne,292210,6103,Basse-Normandie
+62,Pas-de-Calais,1461257,6671,Nord-Pas-de-Calais
+63,Puy-de-Dôme,629416,7970,Auvergne
+64,Pyrénées-Atlantiques,650356,7645,Aquitaine
+65,Hautes-Pyrénées,229670,4464,Midi-Pyrénées
+66,Pyrénées-Orientales,445890,4116,Languedoc-Roussillon
+67,Bas-Rhin,1094439,4755,Alsace
+68,Haut-Rhin,748614,3525,Alsace
+69,Rhône,1708671,3249,Rhône-Alpes
+70,Haute-Saône,239194,5360,Franche-Comté
+71,Saône-et-Loire,554720,8575,Bourgogne
+72,Sarthe,561050,6206,Pays de Loire
+73,Savoie,411007,6028,Rhône-Alpes
+74,Haute-Savoie,725794,4388,Rhône-Alpes
+75,Paris,2234105,105,Ile-de-France
+76,Seine-Maritime,1250120,6278,Haute-Normandie
+77,Seine-et-Marne,1313414,5915,Ile-de-France
+78,Yvelines,1407560,2284,Ile-de-France
+79,Deux-Sèvres,366339,5999,Poitou-Charentes
+80,Somme,569775,6170,Picardie
+81,Tarn,374018,5758,Midi-Pyrénées
+82,Tarn-et-Garonne,239291,3718,Midi-Pyrénées
+83,Var,1007303,5973,Provence-Alpes-Côte d'Azur
+84,Vaucluse,540065,3567,Provence-Alpes-Côte d'Azur
+85,Vendée,626411,6720,Pays de Loire
+86,Vienne,426066,6990,Poitou-Charentes
+87,Haute-Vienne,374849,5520,Limousin
+88,Vosges,380192,5874,Lorraine
+89,Yonne,343377,7427,Bourgogne
+90,Territoire de Belfort,142461,609,Franche-Comté
+91,Essonne,1208004,1804,Ile-de-France
+92,Hauts-de-Seine,1561745,176,Ile-de-France
+93,Seine-Saint-Denis,1515983,236,Ile-de-France
+94,Val-de-Marne,1318537,245,Ile-de-France
+95,Val-d'Oise,1168892,1246,Ile-de-France
+971,Guadeloupe,401554,1628,Guadeloupe
+972,Martinique,396404,1128,Martinique
+973,Guyane,224469,83534,Guyane
+974,Réunion,816364,2504,La Réunion
+976,Mayotte,212645,376,Mayotte
