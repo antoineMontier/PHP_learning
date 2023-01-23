@@ -19,49 +19,39 @@ function getFinHTML():string{
     return $res;
 }
 
-$reader = fopen("departments.txt", "r");
-if ($reader == false) {
-    echo "Error opening file";
-    exit(1);
-}
-$code_html = GetDebutHTML("Departments");
+$code_html = GetDebutHTML();
 
-$code_html .= "<table border=1><tr>";
-//firste line
-$buffer = fgets($reader, 4096);
-$arr = explode(",", $buffer);
+$arr = file("departments.txt");
 
-for($i = 0 ; $i < count($arr) ; $i++){
-    $code_html .= "<th>";
-    $code_html .= $arr[$i];
-    $code_html .= "</th>";
-}
+$code_html .= '<ul>';
 
-$code_html .= "</tr>";
+for($i=1;$i<count($arr);$i++){
+    $code_html .= "<li>";
+    $arrr = explode(",", $arr[$i]);
 
+    $code_html .= $arrr[count($arrr)-1];
 
+    $code_html .= "<ul>";
 
-while (($buffer = fgets($reader, 4096)) !== false) {
-    $buffer = fgets($reader, 4096);
-    $arr = explode(",", $buffer);
+    for($j=0;$j<count($arrr)-1;$j++){
+        $code_html .= "<li>";
+        $aw = explode(",", $arr[0]);
+        $code_html .= $aw[$j];
+        $code_html .= " : ";
+        $code_html .= $arrr[$j];
+        $code_html .= "</li>";
 
-    $code_html .= "<tr>";
-
-    for($i = 0 ; $i < count($arr) ; $i++){
-        $code_html .= "<td>";
-        $code_html .= $arr[$i];
-        $code_html .= "</td>";
     }
-    
-    $code_html .= "</tr>";}
+
+    $code_html .= "</ul></li>";
+
+}
+$code_html .= '</ul>';
 
 
 
-
-$code_html .= "</table>";
 
 $code_html .= GetFinHTML();
 echo $code_html;
 
-fclose($reader);
 ?>
