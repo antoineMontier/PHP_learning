@@ -5,8 +5,8 @@ To *compile*, use the following commmand :<br />
 
 
 ## how to write a function ?
-```
-function function_name([$param_1, ..., $param_n]) [: return_type] {
+```PHP
+function function_name([$param_1, ..., $param_n = default_value]) [: return_type] {
 	//  instructions
 	[return $result;]
 }
@@ -42,14 +42,14 @@ To define a constant variable, use the following command `define("CONSTANT_NAME"
         `$arr = array(-5, 12, 73, -4, 35);`
     
 -**associative arrays :**
-    same as python disctionnaries, access a table the keys of the array.
-    ```
-    $arr = array('green' => 'grass', 
-                        'red' => 6,
-                        'blue' => 'water');
-    ```
+same as python disctionnaries, access a table the keys of the array.
+```PHP
+$arr = array('green' => 'grass', 
+                    'red' => 6,
+                    'blue' => 'water');
+```
     
-        access the array content this way : `echo($arr[3]);//-4``echo($arr[`red`])//6`
+access the array content this way : `echo($arr[3]);//-4``echo($arr[`red`])//6`
 
 ### operators : 
 `+ - / * %`
@@ -63,14 +63,14 @@ differences between == and ===
 `$a++ ++$a` post/pre increment
 ### control structures 
 - for : 
-```
+```PHP
 for($i=0;$i<sizeof($tab);$i++) {
     echo("valeur:$tab[$i]\n");
 }
 for ($i = 1; $i <= 10; print $i, $i++);
 ```
 - if : 
-```
+```PHP
 if ($i == 0) {
     print "i is 0";
 }elseif ($i == 2) {
@@ -81,7 +81,7 @@ if ($i == 0) {
 ```
 - switch same as C
 - foreach
-```
+```PHP
 foreach($assoc as $key => $val) {
     echo "$key : $val\n";
 }
@@ -93,7 +93,7 @@ foreach($assoc as $key => $val) {
 
 create a variable to hold the HTML code (string), then echo this code. finally compile and then push the output into a file
 - file
-```
+```PHP
 <?php
 $HTML_code = '<html>...'
 $HTML_code .= '...</html>'  //.= concatenates a string
@@ -102,3 +102,34 @@ echo $HTML_code
 ```
 
 - terminal execution : `php -f my_php_code.php >> index.html`
+
+### Rand function
+
+```PHP
+$choice = rand(min, max);
+```
+
+
+##  String functions
+
+
+
+- strlen(string) : int
+- explode(string $delimiter, string $source) : array
+- substr(string $source, int $start [, int $length]) :string
+- ltrim(string) : string
+- rtrim(string) : string
+- trim(string) : string
+trim functions delete trailing spaces (\n, \r, \t...)
+
+## Array functions
+
+- sizeof(array) : int (element number)
+- sort(array) : void
+- array_pop(array) : <u>
+- array_push(array, <u> push1, <u> push2...) : int
+
+## reference arguments
+
+Like in C programming, it's possible to access the adress of a variable with `&`.
+The difference with C in the function is that the `&` symbol is only used in the function definition, then the function can be used normaly.
