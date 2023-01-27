@@ -23,7 +23,7 @@ a php file starts with `<?php` and ends with `>`
 
 there are a lot of environnement variables, such as `$SERVER_NAME` and `$REMOTE_ADDR`, to know about them, use the following command `phpinfo();`
 
-##constant variables
+## constant variables
 
 To define a constant variable, use the following command `define("CONSTANT_NAME", const_value);`
 
@@ -110,7 +110,7 @@ $choice = rand(min, max);
 ```
 
 
-##  String functions
+## String functions
 
 
 
@@ -126,10 +126,109 @@ trim functions delete trailing spaces (\n, \r, \t...)
 
 - sizeof(array) : int (element number)
 - sort(array) : void
-- array_pop(array) : <u>
-- array_push(array, <u> push1, <u> push2...) : int
+- array_pop(array) : <type-u>
+- array_push(array, <type-u> push1, <type-u> push2...) : int
 
 ## reference arguments
 
 Like in C programming, it's possible to access the adress of a variable with `&`.
 The difference with C in the function is that the `&` symbol is only used in the function definition, then the function can be used normaly.
+If the `&` symbol is not used in the function definition, you can still pass references when calling the function by adding`&` in front of the argument
+
+
+# the forms
+
+The HTML code needs to get this part in his code : 
+```HTML
+<form action="prog.php" method="post|get" enctype="type" target="name"> title </form>
+```
+- action is the program URL
+- method is how we're sending values to the program
+- enctype & target are no more used
+
+### input 
+
+input can have various tyoes : 
+1. text
+2. password
+3. radio
+4. checkbox
+5. submit
+6. image
+7. rest
+8. file
+9. hidden
+
+It has also various options : 
+- name
+- value (default value)
+- size
+- checked="checked" (default tick)
+- selected="selected"
+
+
+### select
+
+```HTML
+<select name="mymname" size="3">
+    <option value=1> option one</option>
+    <option value=2> option two</option>
+    <option value=3> option three</option>
+</select>
+```
+
+select parameters : 
+- multiple=multiple
+- size
+- name
+
+option parameters :
+- selected (default selection)
+- value
+- disabled
+- label ()
+
+### label
+
+```HTML
+<label for="it">My label : 
+    <input id="it" type="text" size="16" />
+</label>
+```
+
+Label can be used inside a fieldset
+
+<br />
+
+In Html 5, new functionality appears (about 13 more)
+each are unique. We're not using them in this learning PHP repository
+
+
+## PHP form handling
+
+there are several different environnement variables (`phpinfo();`) : 
+
+- `$_GET`
+- `$_POST`
+- `$_SERVER`
+- `$_SESSION` : keep information between two scripts
+- `$_FILES` : file upload
+- `$_COOKIE`
+- `$_REQUEST` : contains GET, POST & COOKIE
+- `$_ENV`
+
+### CGI
+
+We used to use the common gate interface to communicate between the web server and the script.
+
+Nowadays, PHP communicates himself with the web server
+
+## two methods to submit the result
+
+### GET
+
+transfer the URDL to the script (limit of ~8000 B)
+
+### POST
+
+transfer a real message to the script (Limited by the HTML server)
