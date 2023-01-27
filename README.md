@@ -232,3 +232,20 @@ transfer the URDL to the script (limit of ~8000 B)
 ### POST
 
 transfer a real message to the script (Limited by the HTML server)
+
+
+# Error gestion
+
+In order to avoid errors : use the `requested keyword`
+
+use a standard function : 
+```PHP
+function valid_form($method, $tabkeys){
+    foreach($tabkeys as $key){
+        if(!isset($method[$key]))
+            return false;
+    }
+    return true;
+}
+```
+
