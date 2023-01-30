@@ -25,14 +25,32 @@ function form():string{
     $res .= '<form action="form.php" method="post|get" enctype="type" target="surname">';
     $res .= '<p>Nom:<input type="text" name="nom" size="10" /><br />';
     $res .= 'Prenom:<input type="text" name="prenom" size="10" /></p>';
-    $res .= '<p> <select size="';
-    $res .= strval($nb_city);
-    $res .= '" name="ville">'
-    <option value="Amiens" > Amiens </option>
-    <option value="Bordeaux" > Bordeaux</option>
-    <option value="Caen"> Caen</option>
-    <option value="Lille"> Lille</option>
+
+
+    $res .= '<p>Ville<select size="';
+    $res .= strval(count($arr));
+    $res .= '" name="ville">';
+    for($i = 0; $i < count($arr) ; $i++){
+        $res .= '<option value="';
+        $res .= $arr[$i];
+        $res .= '" > ';
+        $res .= $arr[$i];
+        $res .= ' </option>';
+    }
     $res .= '</select>';
+
+    $res .= '<p>Musique  ';
+
+    $res .= '<input type="checkbox" value="Classic" checked="unchecked" /> Classic';
+    $res .= '<input type="checkbox" value="Jazz" checked="unchecked" /> Jazz';
+    $res .= '<input type="checkbox" value="Rock" checked="unchecked" /> Rock';
+    $res .= '<input type="checkbox" value="Pop" checked="unchecked" /> Pop';
+    $res .= '<input type="checkbox" value="Rap" checked="unchecked" /> Rap';
+    $res .= '<input type="checkbox" value="Electro" checked="unchecked" /> Electro';
+
+    $res .= '</p>';
+
+
     //$res .= '<input >';
     $res .=  '</form>';
     $res .= getFinHTML();
