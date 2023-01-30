@@ -41,14 +41,29 @@ function form():string{
 
     $res .= '<p>Musique  ';
 
-    $res .= '<input type="checkbox" value="Classic" checked="unchecked" /> Classic';
-    $res .= '<input type="checkbox" value="Jazz" checked="unchecked" /> Jazz';
-    $res .= '<input type="checkbox" value="Rock" checked="unchecked" /> Rock';
-    $res .= '<input type="checkbox" value="Pop" checked="unchecked" /> Pop';
-    $res .= '<input type="checkbox" value="Rap" checked="unchecked" /> Rap';
-    $res .= '<input type="checkbox" value="Electro" checked="unchecked" /> Electro';
+    $res .= '<input type="checkbox" value="Classic" /> Classic';
+    $res .= '<input type="checkbox" value="Jazz" /> Jazz';
+    $res .= '<input type="checkbox" value="Rock" /> Rock';
+    $res .= '<input type="checkbox" value="Pop" /> Pop';
+    $res .= '<input type="checkbox" value="Rap" /> Rap';
+    $res .= '<input type="checkbox" value="Electro" /> Electro';
 
     $res .= '</p>';
+
+    $res .= '<p>Age';
+
+    $res .= '<input type="radio" name="age" value="m10" /> <10';
+    $res .= '<input type="radio" name="age" value="1120" /> 11-20';
+    $res .= '<input type="radio" name="age" value="2140" /> 21-40';
+    $res .= '<input type="radio" name="age" value="4160" /> 41-60';
+    $res .= '<input type="radio" name="age" value="p60" /> >60';
+
+    $res .= '</p>';
+
+    $res .= '<p><input type="submit" name="enregistrement" value="OK" /></p>';
+    $res .= '<input type="reset" name="annuler" value="Reset" />';
+
+
 
 
     //$res .= '<input >';
