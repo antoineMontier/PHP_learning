@@ -1,5 +1,27 @@
 <?php
 
+function intoBalise(string $bal, string $value = ' ', array $params=null):string{
+    $res = '<';
+    $res .= $bal;
+    if($value == ' ' && $params == null) {
+        $res.=' />';
+        return $res;
+    } elseif ($params != null) {
+        foreach ($params as $key => $val) {
+            $res .=' ';
+            $res .= $key;
+            $res .= '=\'';
+            $res .= $val;
+            $res .= '\'';
+        }
+    }
+    $res .= '>';
+    $res .= $value;
+    $res .= '</';
+    $res .= $bal;
+    $res .= '>';
+    return $res;
+}
 function getDebutHTML(string $title = "Title content"): string{
     $res = '<html lang="fr">
         <head>
