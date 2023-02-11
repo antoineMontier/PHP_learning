@@ -60,7 +60,7 @@ function form():string{
 
     $res .= '</p>';
 
-    $res .= '<p><input type="submit" name="enregistrement" value="OK" /></p>';
+    $res .= '<p><input type="submit" value="OK" /></p>';
     $res .= '<input type="reset" name="annuler" value="Reset" />';
 
 
