@@ -4,6 +4,7 @@ To *compile*, use the following commmand :<br />
 `php -f my_php_code.php`
 
 
+
 ## how to write a function ?
 ```PHP
 function function_name([$param_1, ..., $param_n = default_value]) [: return_type] {
