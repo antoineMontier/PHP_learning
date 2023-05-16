@@ -40,7 +40,7 @@ function getFinHTML():string{
     </html>';
     return $res;
 }
-function form():string{
+function form() : string{
     $arr = file("ville.txt");
 
     $res = getDebutHTML();

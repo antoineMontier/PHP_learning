@@ -67,4 +67,4 @@ function multiplicationTable(int $n=10):string{
     return $r;
 }
 
-echo multiplicationTable(10);
+// echo multiplicationTable(10);

@@ -71,8 +71,43 @@ function updateFilmLenght(int $id, int $newLenght){
 // updateFilmLenght(1, 55);
 
 
+// == Ex 3.3
 
+function getOpenItem(string $item, array $attributes = null) : string{
+    $res = '<'.$item.' ';
+    if(isset($attributes) && $attributes != null)
+        foreach ($attributes as $key => $val)
+            $res .= $key.'="'.$val.'"';
+    return $res.'>';
+    
+}
 
+function page_form(){
+    // include htmlUtility.php
+    include "../S2/phpHtmlLib.php";
+    $pageHTML = getDebutHTML();
+    $attributsForm = [
+        'action' => './script.php',
+        'method' => 'post'
+    ];
+    $pageHTML .= getOpenItem('form', $attributsForm);
+    $pageHTML .= '<fieldset>';
+    $pageHTML .= getCodeHTML('legend', 'Choisissez un film');
+    $fp = fopen('film.txt', 'r');
+    if ($fp) {
+        while (!(feof($fp))) {
+            $ligne = fgets($fp);
+            $film_array = explode('%%', $ligne);
+            $pageHTML .= getCodeHTML('input', $film_array[1], ['type' => 'radio', 'value' => $film_array[1], 'name' => 'film_selection', 'id' => $film_array[1]]);
+            $pageHTML .= '<br>';
+        }
+    }
+    $pageHTML .= '</fieldset>';
+    $pageHTML .= '<input type="submit" value="envoyer" name="send" />';
+    $pageHTML .= getFinHTML();
+    echo $pageHTML;
+}
 
+// echo page_form();
 
 ?>
