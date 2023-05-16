@@ -146,5 +146,35 @@ function display_film_information() {
     echo $pageHTML;
 }
 
+// echo display_film_information();
+
+
+// == Ex 3.3
+
+function form_update_film_length(int $id){
+    include "../S2/phpHtmlLib.php";
+    $film = getFilmById($id);
+    $pageHTML = getDebutHtml();
+    $pageHTML .= getCodeHTML('h1', "Modifier la durée");
+    $attributsForm = [
+        'action' => './script.php',
+        'method' => 'post'
+    ];
+    $pageHTML .= getOpenItem('form', $attributsForm);
+    $pageHTML .= '<ul>';
+    foreach ($film as $key => $val)
+        $pageHTML .= '<li>' . $key .' : '. $val . '</li>';
+    $pageHTML .= '</ul>';
+    $pageHTML .= '<p>';
+    $pageHTML .= getCodeHTML('b', 'Nouvelle durée :');
+    $pageHTML .= "<input type='text' name='update' value=".$film['film_length']."/>";
+    $pageHTML .= '</p>';
+    $pageHTML .= '<input type="submit" name = "send" value = "send" id="send"/>';
+    $pageHTML .= '</form>';
+    $pageHTML .= getFinHTML();
+    echo $pageHTML;
+}
+
+echo form_update_film_length(1);
 
 ?>
