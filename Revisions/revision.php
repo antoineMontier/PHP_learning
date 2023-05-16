@@ -71,7 +71,7 @@ function updateFilmLenght(int $id, int $newLenght){
 // updateFilmLenght(1, 55);
 
 
-// == Ex 3.3
+// == Ex 3.1
 
 function getOpenItem(string $item, array $attributes = null) : string{
     $res = '<'.$item.' ';
@@ -98,16 +98,53 @@ function page_form(){
         while (!(feof($fp))) {
             $ligne = fgets($fp);
             $film_array = explode('%%', $ligne);
-            $pageHTML .= getCodeHTML('input', $film_array[1], ['type' => 'radio', 'value' => $film_array[1], 'name' => 'film_selection', 'id' => $film_array[1]]);
+            $title = trim($film_array[1]);
+            $pageHTML .= getCodeHTML('input', $title, ['type' => 'radio', 'value' => $title, 'name' => 'film_selection', 'id' => $title]);
             $pageHTML .= '<br>';
         }
     }
     $pageHTML .= '</fieldset>';
-    $pageHTML .= '<input type="submit" value="envoyer" name="send" />';
+    $pageHTML .= '<input type="submit" value="envoyer" name="send" /></form>';
     $pageHTML .= getFinHTML();
     echo $pageHTML;
 }
 
 // echo page_form();
+
+
+// == Ex 3.2
+
+function display_film_information() {
+    include "../S2/phpHtmlLib.php";
+    $pageHTML = getDebutHTML();
+    $attributsForm = [
+        'action' => './script.php',
+        'method' => 'post'
+    ];
+    $pageHTML .= getOpenItem('form', $attributsForm);
+    $pageHTML .= '<ul>';
+    $pageHTML .= '<fieldset>';
+    $pageHTML .= getCodeHTML('legend', 'Film on screen');
+    $fp = fopen('film.txt', 'r');
+    if ($fp) {
+        while (!(feof($fp))) {
+            $ligne = fgets($fp);
+            $film_array = explode('%%', $ligne);
+            $infos = ['film_id', 'film_title', 'film_year', 'film_length'];
+            $pageHTML .= '<li><ul>';
+            for ($i = 0; $i < count($film_array) ; $i++)
+                $pageHTML .= '<li>'.$infos[$i].' : '.trim($film_array[$i]).'</li>';
+            $pageHTML .= getCodeHTML('a', 'update', ['href' => './#']); // replace with the update page
+            $pageHTML .= '</ul></li>';
+
+        }
+    }
+    $pageHTML .= '</ul>';
+    $pageHTML .= '</fieldset>';
+    $pageHTML .= '<input type="submit" value="envoyer" name="send" /></form>';
+    $pageHTML .= getFinHTML();
+    echo $pageHTML;
+}
+
 
 ?>
