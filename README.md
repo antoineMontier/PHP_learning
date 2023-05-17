@@ -1,12 +1,12 @@
 # PHP_learning
 
 To *compile*, use the following commmand :<br />
-`php -f my_php_code.php`
+`php -f script.php`
 
 
 ## how to write a function ?
 ```PHP
-function function_name([$param_1, ..., $param_n = default_value]) [: return_type] {
+function function_name([[type1] $param_1, ..., [typen] $param_n = default_value]) [: return_type] {
 	//  instructions
 	[return $result;]
 }
@@ -17,7 +17,7 @@ use `//` for one line or, `/*blabla*/` for multiple lines<br />
 
 every variable is preceded by `$` there is no type for the variables and, no initialization is needed (same as python)<br />
 
-a php file starts with `<?php` and ends with `>`
+a php file starts with `<?php` and ends with `?>`
 
 ### Environnement
 
@@ -101,8 +101,10 @@ echo $HTML_code
 >
 ```
 
-- terminal execution : `php -f my_php_code.php >> index.html`
-
+- terminal execution :
+```sh
+$ php -f my_php_code.php > index.html
+```
 ### Rand function
 
 ```PHP
@@ -111,8 +113,6 @@ $choice = rand(min, max);
 
 
 ## String functions
-
-
 
 - strlen(string) : int
 - explode(string $delimiter, string $source) : array
@@ -165,6 +165,7 @@ It has also various options :
 - size
 - checked="checked" (default tick)
 - selected="selected"
+- required (imossible to tick until if the field is empty)
 
 
 ### select
@@ -234,7 +235,7 @@ transfer the URDL to the script (limit of ~8000 B)
 transfer a real message to the script (Limited by the HTML server)
 
 
-# Error gestion
+## Error gestion
 
 In order to avoid errors : use the `requested keyword`
 
@@ -249,3 +250,105 @@ function valid_form($method, $tabkeys){
 }
 ```
 
+The `isset()` method returns true if the given argument is not null.
+Other functions such as `is_array()` are also useful to use
+
+# Forms between two pages
+
+A traditional web page has a form, most of users errors will be handled by the html code. We still need to use php after the form is submitted.
+
+Consider the following example : 
+
+```html
+...
+<form id = "my_form" action = "./script.php" method = "post">
+
+    <div> <!-- required attribut will block the validate button if the name field is empty -->
+        <input type = "text" id = "text_name" name = "surname" value="my_default_value" required>
+        <label for = "text_name">Enter your surname</label>
+    </div>
+
+    <div> <!-- use <div> to display the fields horizontally -->
+        <input type = "date" id = "birthdate" name = "birthdate" min = "1900-01-01" max = "2025-01-01" value="2000-01-01">
+        <label for = "birthdate">Enter your birthdate</label>
+    </div>
+
+    <fieldset> <!-- fieldset makes a group of questions -->
+
+        <legend>Choose your eye color</legend>
+
+        <div>
+            <input type="radio" id="blue" name="eye_color" value="blue">
+            <label for="blue">blue</label>
+        </div>
+
+        <div> <!-- checked attribute make the input brown checked when the page loads -->
+            <input type="radio" id="brown" name="eye_color" value="brown" checked>
+            <label for="brown">brown</label>
+        </div>
+
+        <div>
+            <input type="radio" id="green" name="eye_color" value="green">
+            <label for="green">green</label>
+        </div>
+        
+    </fieldset>
+
+    <fieldset>
+            <legend>Spoken languages</legend> <!-- Here, languages spoken will all be stored in an array -->
+
+            <div>
+                <input type="checkbox" id="en" name="languages[]" value="english">
+                <label for="en">english</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="fr" name="languages[]" value="french">
+                <label for="en">french</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="ch" name="languages[]" value="chinese">
+                <label for="en">chinese</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="jp" name="languages[]" value="japanese">
+                <label for="en">japanese</label>
+            </div>
+
+        </fieldset>
+        
+    <input type="submit" value="Validate" /> <!-- send value to script.php -->
+</form>
+...
+```
+
+The above example shows the html code needed to call the `script.php` file with the form answers. Here's an example of php script to handle the result : 
+
+```php
+...
+<?php
+    // get the result 
+        // error gestion
+    if(isset($_POST['surname']))
+        $surname = $_POST['surname'];
+    else echo 'error';
+
+    if(isset($_POST['birthdate']))
+        $birthdate = $_POST['birthdate'];
+    else echo 'error';
+
+    if(isset($_POST['eye_color']))
+        $eye_color = $_POST['eye_color'];
+    else echo 'error';
+
+    if(isset($_POST['languages[]']) && is_array($_POST['languages']))
+        $languages = $_POST['languages'];
+    else echo 'error';
+
+    // display result
+    echo "<p>You are $surname, born the $birthdate, Your eyes are $eye_color. You can speak ".count($languages)." languages</p>";
+?>
+...
+```

@@ -1,0 +1,69 @@
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Title content</title>
+</head>
+<body>
+    <form id = "my_form" action = "./script.php" method = "post">
+
+        <div> <!-- required attribut will block the validate button if the name field is empty -->
+            <input type = "text" id = "text_name" name = "surname" value="my_default_value" required>
+            <label for = "text_name">Enter your surname</label>
+        </div>
+    
+        <div> <!-- use <div> to display the fields horizontally -->
+            <input type = "date" id = "birthdate" name = "birthdate" min = "1900-01-01" max = "2025-01-01" value="2000-01-01">
+            <label for = "birthdate">Enter your birthdate</label>
+        </div>
+    
+        <fieldset> <!-- fieldset makes a group of questions -->
+    
+            <legend>Choose your eye color</legend>
+    
+            <div>
+                <input type="radio" id="blue" name="eye_color" value="blue">
+                <label for="blue">blue</label>
+            </div>
+    
+            <div> <!-- checked attribute make the input brown checked when the page loads -->
+                <input type="radio" id="brown" name="eye_color" value="brown" checked>
+                <label for="brown">brown</label>
+            </div>
+    
+            <div>
+                <input type="radio" id="green" name="eye_color" value="green">
+                <label for="green">green</label>
+            </div>
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>Spoken languages</legend> <!-- Here, languages spoken will all be stored in an array -->
+
+            <div>
+                <input type="checkbox" id="en" name="languages[]" value="english">
+                <label for="en">english</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="fr" name="languages[]" value="french">
+                <label for="en">french</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="ch" name="languages[]" value="chinese">
+                <label for="en">chinese</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="jp" name="languages[]" value="japanese">
+                <label for="en">japanese</label>
+            </div>
+
+        </fieldset>
+
+
+        <input type="submit" value="Validate" />
+    </form>
+</body>
+</html>
