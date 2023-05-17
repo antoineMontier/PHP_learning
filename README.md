@@ -352,3 +352,100 @@ The above example shows the html code needed to call the `script.php` file with 
 ?>
 ...
 ```
+
+#### Selections
+HTML Selection offers a field of selection. It can be mutliple or not, it depends on the `multiple="multiple"` attribute.
+If it's multiple, the user can have various choixces by pressing `Ctrl + click` or `Shift + click`.
+
+html :  
+```html
+...
+<form action="script.php" method="post">
+
+    <select name="Country[]" multiple="multiple" id="countryform">
+
+        <option value="France" selected>France</option>
+        <option value="Germany" selected>Germany</option>
+        <option value="United States" selected>United States</option>
+        <option value="English">English</option>
+        <option value="Australia">Australia</option>
+
+    </select>
+    <label for="countryform">Which country have you ever been to ?</label>
+
+    <input type="submit" value="Validate">
+
+</form>
+...
+```
+
+Here is the php code to handle it : 
+
+php:
+```php
+<?php
+if(isset($_POST['Country[]']) && is_array($_POST['Country'])){
+    $country = $_POST['Country'];
+    foreach($country as $c)
+        echo $c
+}else
+    echo 'error'
+?>
+```
+
+#### Text area
+Text area allows the user to input a large amount of text
+
+html:
+```html
+...
+<form action="script.php" method="post">
+    <textarea name="bio" rows="4" cols="10" id="bioform" required></textarea>
+    <label for="bioform">Enter your biography</label>
+    <input type="submit" value="send" />
+</form>
+...
+```
+
+php:
+```php
+<?php
+if (isset($_POST["bio"])) {
+    $bio = $_POST["bio"];
+    echo "Bio: $bio";
+}
+?>
+```
+
+#### Files transmission
+
+Only `POST` method allowed here. In the example, the data is restricted to `*.pdf`.
+
+html:
+```html
+...
+<form action="script.php" method="post">
+    <input type="file" name="cover_letter" accept="application/pdf" required/> 
+    <label for="cover_letter">Enter your cover letter</label>
+    <input type="submit" value="send" />
+</form>
+...
+```
+
+php:
+```php
+<?php
+if(issset($_FILES['cover_letter'])){
+    echo "filename = ".$_FILES['nom']['name'];
+    echo "filetype = ".$_FILES['nom']['type']; // ============= should be 'application/pdf' thanks to the form
+    echo "file_size = ".$_FILES['nom']['size']."b"; // ======== file size (bytes)
+    echo "temporary filename = ".$_FILES['nom']['tmp_name']; // upoload name can be different, 'tmp_name' returns the temporary filename
+    echo "error = ".$_FILES['nom']['error']; // =============== should be 'UPLOAD_ERR_OK' (no errors)
+}else echo 'error';
+?>
+```
+
+
+# Connexion with PostgreSQL
+
+PHP

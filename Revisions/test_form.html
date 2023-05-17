@@ -65,5 +65,33 @@
 
         <input type="submit" value="Validate" />
     </form>
+
+    <form action="script.php" method="post">
+
+        <select name="Country[]" id="countryform">
+
+            <option value="France" selected>France</option>
+            <option value="Germany" selected>Germany</option>
+            <option value="United States" selected>United States</option>
+            <option value="English">English</option>
+            <option value="Australia">Australia</option>
+
+        </select>
+        <label for="countryform">Which country have you ever been to ?</label>
+
+        <input type="submit" value="Validate">
+    </form>
+
+    <form action="script.php" method="post">
+        <textarea name="bio" rows="4" cols="10" id="bioform" required></textarea>
+        <label for="bioform">Enter your biography</label>
+        <input type="submit" value="send" />
+    </form>
+
+    <form action="script.php" method="post">
+        <input type="file" name="cover_letter" accept="application/pdf" required/>
+        <label for="cover_letter">Enter your cover letter</label>
+        <input type="submit" value="send" />
+    </form>
 </body>
 </html>

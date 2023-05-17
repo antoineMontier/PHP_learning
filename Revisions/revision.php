@@ -46,8 +46,10 @@ function getFilmById(int $id) : array{
         pg_close($ptrDB);
         return array();
     }
+
     pg_close($ptrDB);
     $result = pg_fetch_row($res);
+    pg_free_result($res);
     return $result;
 }
 
@@ -63,7 +65,9 @@ function updateFilmLenght(int $id, int $newLenght){
 
     $query = "UPDATE film SET film_length = $newLenght WHERE film_id = $id;";
 
-    pg_query($ptrDB, $query);
+    $res = pg_query($ptrDB, $query);
+
+    pg_free_result($res);
 
     pg_close(($ptrDB));
 }
