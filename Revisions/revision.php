@@ -167,7 +167,7 @@ function form_update_film_length(int $id){
     $pageHTML .= '</ul>';
     $pageHTML .= '<p>';
     $pageHTML .= getCodeHTML('b', 'Nouvelle durée :');
-    $pageHTML .= "<input type='text' name='update' value=".$film['film_length']."/>";
+    $pageHTML .= "<input type='quantity' min='0' max='200' name='update' value=".trim($film[3])."/>";
     $pageHTML .= '</p>';
     $pageHTML .= '<input type="submit" name = "send" value = "send" id="send"/>';
     $pageHTML .= '</form>';
@@ -175,6 +175,6 @@ function form_update_film_length(int $id){
     echo $pageHTML;
 }
 
-echo form_update_film_length(1);
+// echo form_update_film_length(1);
 
 ?>
