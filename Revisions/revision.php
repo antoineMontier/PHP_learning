@@ -182,4 +182,27 @@ function form_update_film_length(int $id){
 
 // echo form_update_film_length(1);
 
+
+function display_table(string $table){
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "SELECT * FROM $table;";
+    
+    $res = pg_query($ptrDB, $query);
+
+    $tablestr = pg_fetch_all($res);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+
+    foreach($tablestr as $line){
+        foreach($line as $col)
+            echo $col."|";
+        echo "\n";
+    }
+}
+
+display_table('film');
+
 ?>

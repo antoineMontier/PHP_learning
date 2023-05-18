@@ -486,7 +486,7 @@ function insert_db(array $str_array){
     $ptrDB = connexion();
     if($ptrDB == false) return;
 
-    $query = "INSERT INTO my_db ($str_array[0], $str_array[2]...) VALUES ($str_array[1], $str_array[3]...);";
+    $query = "INSERT INTO my_table ($str_array[0], $str_array[2]...) VALUES ($str_array[1], $str_array[3]...);";
     
     $res = pg_query($ptrDB, $query);
 
@@ -505,19 +505,47 @@ function select_db(int $id){
     $ptrDB = connexion();
     if($ptrDB == false) return;
 
-    $query = "SELECT * FROM my_db WHERE id = $id;";
+    $query = "SELECT * FROM my_table WHERE id = $id;";
     
     $res = pg_query($ptrDB, $query);
 
-    $function_result = pg_fetch($res);
+    $function_result = pg_fetch_all($res);
 
     pg_free_result($res);
     pg_close($ptrDB);
 
-    return $function_result;
+    return $function_result[0]; // index 0 because it's a double array
 }
 ?>
 ```
+
+Particular case : SELECT ALL : 
+In the bellow example, we display all the informations about a particular table
+
+```php
+<?php
+function display_table(string $table){
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "SELECT * FROM $table;";
+    
+    $res = pg_query($ptrDB, $query);
+
+    $tablestr = pg_fetch_all($res);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+
+    foreach($tablestr as $line){
+        foreach($line as $col)
+            echo $col."|";
+        echo "\n";
+    }
+}
+?>
+```
+
 
 #### Update function
 Here's how we can update a sql line in a table from a database.
@@ -557,3 +585,4 @@ function delete_line($table, $id){
 }
 ?>
 ```
+
