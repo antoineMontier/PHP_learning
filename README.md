@@ -471,9 +471,12 @@ function connexion() {
 }
 ?>
 ```
-### Query functions
+### Query functions
+
 Now that we have a connection function we can easily query out database. 
+
 #### Insert function
+
 Here is a traditional insert function
 
 ```php
@@ -516,4 +519,41 @@ function select_db(int $id){
 ?>
 ```
 
-#### 
+#### Update function
+Here's how we can update a sql line in a table from a database.
+```php
+<?php
+function update_db(string $table, int $id, array $keys, array $new_val){
+    // check arguments using isset, is_array...
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "UPDATE $table SET ($keys[0], $keys[1]...$keys[n]) = ($new_val[0], $new_val[1]...$new_val[n]) WHERE id = $id;";
+
+    $res = pg_query($ptrDB, $query);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+}
+?>
+```
+
+#### Delete function
+Here's how we can delete a line in a table of an existing database
+
+```php
+<?php
+function delete_line($table, $id){
+
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "DELETE FROM $table WHERE id = $id;";
+
+    $res = pg_query($ptrDB, $query);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+}
+?>
+```
