@@ -424,8 +424,8 @@ Only `POST` method allowed here. In the example, the data is restricted to `*.pd
 html:
 ```html
 ...
-<form action="script.php" method="post">
-    <input type="file" name="cover_letter" accept="application/pdf" required/> 
+<form action="script.php" method="post"> <!-- enctype is only used for file -->
+    <input type="file" name="cover_letter" accept="application/pdf" enctype="multipart/form-data" required/> 
     <label for="cover_letter">Enter your cover letter</label>
     <input type="submit" value="send" />
 </form>
@@ -448,4 +448,72 @@ if(issset($_FILES['cover_letter'])){
 
 # Connexion with PostgreSQL
 
-PHP
+PHP allows its users to interact easily with PostgreSQL. The `pg` library is very handy when it comes to database using. 
+
+### Connexion function
+It's a good practise to store connexion informations (login and password) in another file included in the php script.
+here's how a connexion file would look like : 
+```php
+<?php
+$_ENV['dbHost']   = 'IP_adress';
+$_ENV['dbName']   = 'database_name';
+$_ENV['dbUser']   = 'username';
+$_ENV['dbPasswd'] = '********';
+
+function connexion() {
+    $dbHost    = $_ENV['dbHost'];
+    $dbName    = $_ENV['dbName'];
+    $dbUser    = $_ENV['dbUser'];
+    $dbPasswd  = $_ENV['dbPasswd'];
+    $strConnex = "host=$dbHost dbname=$dbName user=$dbUser password=$dbPasswd";
+    $ptrDB = pg_connect($strConnex);
+    return $ptrDB;
+}
+?>
+```
+### Query functions
+Now that we have a connection function we can easily query out database. 
+#### Insert function
+Here is a traditional insert function
+
+```php
+<?php
+// considering $str_array has this logic : ['key1', 'value1', ...]
+function insert_db(array $str_array){
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "INSERT INTO my_db ($str_array[0], $str_array[2]...) VALUES ($str_array[1], $str_array[3]...);";
+    
+    $res = pg_query($ptrDB, $query);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+}
+?>
+```
+
+#### Select function
+Here's an example of how we get data from postgreSQL using php
+
+```php
+<?php
+function select_db(int $id){
+    $ptrDB = connexion();
+    if($ptrDB == false) return;
+
+    $query = "SELECT * FROM my_db WHERE id = $id;";
+    
+    $res = pg_query($ptrDB, $query);
+
+    $function_result = pg_fetch($res);
+
+    pg_free_result($res);
+    pg_close($ptrDB);
+
+    return $function_result;
+}
+?>
+```
+
+#### 

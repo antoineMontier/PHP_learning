@@ -47,9 +47,10 @@ function getFilmById(int $id) : array{
         return array();
     }
 
-    pg_close($ptrDB);
     $result = pg_fetch_row($res);
     pg_free_result($res);
+    pg_close($ptrDB);
+
     return $result;
 }
 
