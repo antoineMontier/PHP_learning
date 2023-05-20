@@ -203,6 +203,18 @@ function display_table(string $table){
     }
 }
 
-display_table('film');
+// display_table('film');
+
+
+function update_string(string & $str) : string {
+    $str .= " updated !";
+    return $str;
+}
+
+$string = "blabla";
+$res = update_string ($string);
+echo "string = $string\nres = $res\n";
+
+echo "\n";
 
 ?>
