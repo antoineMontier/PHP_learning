@@ -138,13 +138,13 @@ If the `&` symbol is not used in the function definition, you can still pass ref
 
 # the forms
 
-The HTML code needs to get this part in his code : 
 ```HTML
 <form action="prog.php" method="post|get" enctype="type" target="name"> title </form>
 ```
 - action is the program URL
 - method is how we're sending values to the program
-- enctype & target are no more used
+- enctype & target are no more used except for photos
+
 
 ### input 
 
@@ -304,17 +304,17 @@ Consider the following example :
 
             <div>
                 <input type="checkbox" id="fr" name="languages[]" value="french">
-                <label for="en">french</label>
+                <label for="fr">french</label>
             </div>
 
             <div>
                 <input type="checkbox" id="ch" name="languages[]" value="chinese">
-                <label for="en">chinese</label>
+                <label for="ch">chinese</label>
             </div>
 
             <div>
                 <input type="checkbox" id="jp" name="languages[]" value="japanese">
-                <label for="en">japanese</label>
+                <label for="jp">japanese</label>
             </div>
 
         </fieldset>
