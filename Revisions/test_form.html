@@ -4,7 +4,7 @@
     <title>Title content</title>
 </head>
 <body>
-    <form id = "my_form" action = "./script.php" method = "post">
+    <form id = "my_form" action = "./script.php" method = "get">
 
         <div> <!-- required attribut will block the validate button if the name field is empty -->
             <input type = "text" id = "text_name" name = "surname" value="my_default_value" required>
@@ -21,17 +21,17 @@
             <legend>Choose your eye color</legend>
     
             <div>
-                <input type="radio" id="blue" name="eye_color" value="blue">
+                <input type="radio" name="eye_color" value="blue">
                 <label for="blue">blue</label>
             </div>
     
             <div> <!-- checked attribute make the input brown checked when the page loads -->
-                <input type="radio" id="brown" name="eye_color" value="brown" checked>
+                <input type="radio"  name="eye_color" value="brown" checked>
                 <label for="brown">brown</label>
             </div>
     
             <div>
-                <input type="radio" id="green" name="eye_color" value="green">
+                <input type="radio"  name="eye_color" value="green">
                 <label for="green">green</label>
             </div>
             
@@ -83,7 +83,7 @@
     </form>
 
     <form action="script.php" method="post">
-        <textarea name="bio" rows="4" cols="10" id="bioform" required></textarea>
+        <textarea name="bio" rows="4" cols="10" id="bioform" x></textarea>
         <label for="bioform">Enter your biography</label>
         <input type="submit" value="send" />
     </form>
